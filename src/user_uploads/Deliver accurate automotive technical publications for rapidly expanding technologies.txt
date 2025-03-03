@@ -1,0 +1,118 @@
+
+
+
+
+TOP 
+
+
+
+
+
+Products
+Deliver accurate automotive technical publications for rapidly expanding technologies
+
+June 18, 2024 •   5 MIN READ
+
+
+Share Copy link
+
+
+
+
+
+
+
+
+
+Print
+
+
+
+
+
+
+
+ 
+					White car speed driving on asphalt road at daytime				
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+				By Sarah Bartash			 
+The evolution of electric vehicles (EVs) and autonomous vehicles (AVs) has complicated the architecture of electrical systems, creating new challenges for automakers’ after-sales teams to deliver automotive technical publications.
+This complexity means there’s a big need for creating precise, accurate technical documentation for certification, service and maintenance. Getting this technical documentation right is critically important, especially when it comes to driver safety and traceability of these rapidly advancing technologies.
+In this post, we’ll take a look at how technical documentation is being delivered to consumers today, and how two products from Siemens – Capital E/E Publisher and Capital Service Explore – can ensure quality, efficiency and verification of documentation, accelerating time-to-market and increasing customer satisfaction.
+Documentation delivery has evolved
+Since the 1980s, the pace of technological evolution has been accelerating – and with it, the complexity of technology. Forty years ago, typical automotive products might have had a single Engine Control Module (ECM) to manage rudimentary electronic systems. Today, automakers must often address hundreds of issues before releasing a single product, as they navigate the development of sophisticated software that governs everything that happens in a vehicle, from numerous electronic systems to over-the-air updates.
+The delivery of technical information to consumers has also undergone significant transformations over the years. Initially distributed in printed manuals, this information moved to being provided in digital formats, such as PDFs on CDs and DVDs. Today, they are delivered online.
+Unlike paper manuals, CDs and DVDs, online documentation delivery helps to speed up the delivery process dramatically, allowing authors more time to document and process technical information and changes prior to delivery. With the industry now shifting towards an integrated aftersales operating system (OS), automakers are once again challenged with determining an effective method of getting the necessary technical information to the end users. This involves not only choosing the right technology but also ensuring that the information is accessible, understandable and relevant to consumers’ needs.
+Capital E/E Publisher
+As the method of documentation delivery evolved, automakers felt the impact in six areas: authoring time, engineering change, service documentation, technical training, bulk warranty time, and service hardware. To mitigate these impacts, Siemens focuses on delivering quality and efficiency while ensuring the final output is thoroughly verified by Capital E/E Publisher. This approach ensures that all products meet the high standards required before reaching the market.
+Let’s take a look at how Capital E/E Publisher addresses quality, efficiency and verification when creating consumer-facing documentation.
+
+
+Quality
+Using the digital thread, Capital E/E Publisher ensures content is correct by construction, eliminating any manual interference with the design data. By doing so, it ensures quality in the schematic and that no unintended change is made to the design.
+Capital E/E Publisher can consume content from engineering, manufacturing, suppliers and compliance departments – specifications, harness diagrams, 3D location illustrations, guided diagnostic content and more –  enabling OEMs to provide a complete set of data to support the product. This enriches end users’ product experience, and provides them with all of the information they need to resolve any issues that arise.
+Efficiency
+When creating documentation, time is of the essence; however, efficiency can’t compromise quality. Capital E/E Publisher offers several features and capabilities that help to ensure quality while accelerating the creation of wiring design documentation:
+
+Rules-based diagram generation: Capital E/E Publisher provides rules-based diagram generation, which drastically reduces authoring time, transforming an engineering schematic into a service wiring diagram in minutes. The layout algorithm identifies the diagram objects and creates an appropriate layout based on the predefined rules and various diagram generation parameters provided by the user.
+
+
+Fetch related actions: Fetch related actions introduce directly connected objects automatically, without the risk of any inadvertent changes to the connectivity itself. For example, power connections from a source diagram can be added to the target system diagram using fetch related action.
+
+First the author creates awareness to define the scope for the action, and the fetch related action selects any object begins by creating awareness to define the scope for the action and sets it as active. Next, the author selects any object and invokes a federated action to retrieve connectivity. The action can be executed multiple times to ensure all the necessary objects have been retrieved.
+
+Lock print regions: Capital E/E Publisher uses lock print regions to increase efficiency, as well. Print regions in a wiring diagram help authors to distribute content across pages and make them print-ready. However, the process can be error-prone, resulting in the need for costly rework. By locking print regions in their place, authors can work efficiently and eliminate risk of error.
+
+With these features, Capital E/E Publisher helps to address challenges the OEM faces with publishing documentation, while providing an efficient and a customizable approach.
+Service Explorer
+When creating documentation, it’s critical to deliver the right information in one easy-to-use package. Diagnostic procedures play a major part in rectifying issues reported with products, without the need for 3D integrations or additional resources. Service Explorer brings a richer data flow to the technician’s fingertips.
+Service Explorer provides an integrated and interactive environment that enables technicians to view step-by-step diagnostic procedures simultaneously with other resources. For example, they can view wiring diagrams to understand electrical connectivity, or 3D illustrations to look at components faster and understand the accessibility needs. The solution is also hardware-agnostic and can be used on a broad range of hardware configurations, from iPad laptops to workstations or even bespoke hardware.
+As products and systems evolve, supporting legacy systems with vast amounts of collateral becomes increasingly challenging. By implementing Mendix’s low-code application software, Service Explorer efficiently extracts data from older support systems, as needed by technicians. This approach eliminates the need for maintaining the multiple portals technicians previously had to navigate to access data, as well as the more cumbersome task of migrating legacy data to a new system. All of these integrations help us to address the impacts felt by the workshop technician on technical training, book warranty time and service hardware.
+A Dynamic Documentation Duo
+As the automotive industry advances, integrating sophisticated electrical and electronic systems, the landscape of vehicle servicing is evolving. The move from internal combustion engines to electric motors and batteries brings challenges because of the high voltages involved, requiring special handling. Additionally, the emergence of automated vehicle systems means technicians need more training to handle their complexity and ensure passenger safety.
+Capital E/E Publisher allows OEMs to provide a seamless experience for personnel in the field, while Service Explorer lets technicians access necessary information directly in the workshop, boosting productivity by reducing time spent in training. Together, they consolidate all essential data into a single portal on one screen, simplifying access and ensuring all information is timely and tailored to the technician’s current needs. This integration not only increases the efficiency of the workforce but also enhances customer satisfaction by reducing warranty and buyback costs, and improving fleet uptime.
+Watch this webinar for a quick demo of these products.
+
+
+
+
+
+
+
+
+ Topics
+News Featured Product Updates Aerospace  Automotive  Capital  documentation  E/E Systems  publications  Capital  Automotive & Transportation  
+
+
+
+
+
+Stay up to date with the Siemens Software news you need the most.
+
+						Get Started						
+
+
+
+What to read next:Announcing the development of Capital software integration with IBM for E/E systems and software developmentApril 18, 2023Siemens Capital software integration with IBM will connect IBM Engineering System Design Rhapsody for systems engineering with solutions from the...By Jan Richter  5 MIN READRealize LIVE 2023 Capital sessions – E/E systems advances with real-world examples PART 2June 28, 2023Click here for PART 1: SaaS solutions for complexity and more Realize LIVE America took place June 12-15, 2023 and...By Sarah Bartash  5 MIN READGet ready to accelerate: IESF Munich event is for automotive innovatorsNovember 9, 2023Explore the challenges facing electrical and electronic (E/E) design engineers and their teams at the Integrated Electrical Solutions Forum (IESF)!...By Sarah Bartash  6 MIN READ 
+
+
+Leave a Reply Cancel replyYou must be logged in to post a comment. 
+
+
+
+This article first appeared on the Siemens Digital Industries Software blog at https://blogs.sw.siemens.com/ee-systems/2024/06/18/deliver-accurate-automotive-technical-publications-for-rapidly-expanding-technologies/

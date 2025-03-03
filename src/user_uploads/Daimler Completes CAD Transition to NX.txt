@@ -1,0 +1,88 @@
+
+
+
+
+TOP 
+
+
+
+
+
+Products
+Daimler Completes CAD Transition to NX
+
+June 16, 2015 •   2 MIN READ
+
+
+Share Copy link
+
+
+
+
+
+
+
+
+
+Print
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+				By Amy Reyes			 
+Daimler is now using NX CAD after successfully completing their transition from Dassault Systemes’ CATIA just a few weeks ago. Since the 2010 announcement first shook the CAD world, the automotive OEM has trained more than 6,200 users and migrated more than 235,000 CAD objects.
+What could possibly inspire a company to go through such a large-scale change? Many factors came into play (you can read about them in my previous post), and most are what you expect: cost, sustainability, and efficiency.
+But what I found most interesting are the unexpected benefits Daimler reaped from this transition. Since the automotive OEM would have to train its users on the new software anyway, Daimler took this opportunity to align business processes and get everyone on the same page.
+They established new, more effective and commonly used ways of doing things, according to Professor Alfred Katzenbach, former director of IT Management in Mercedes-Benz R&D department.
+Daimler used real parts in production for more than 250 unique business cases to determine the best practices their teams should employ. From these, they made training tutorial videos to add to a reference library. Their engineers now are able to refer back to the material as many times as they need to understand, and everyone uses the same process—the best one for the job—to achieve results.
+Daimler was able to recognize the potential for improvement and actually take the steps necessary to achieve it in more ways than just one. 
+It really goes back to their core users though. The people who work with the software every day, more than 6,200 users, have been key to their success. They were even part of the decision making process that led Daimler to choose NX over CATIA.
+Daimler brought in their key users to get feedback on the CAD software solutions. After running different process scenarios in both, it was obvious which solution the users wanted, says Professor Katzenbach.
+A big congratulations is due to everyone who worked to make this—the largest CAD software migration—not just possible, but a true success!
+For more information, be sure to check out the official Daimler press release. You can also read more about how they made the transition on the Siemens PLM Software blog.
+
+
+
+
+
+
+ Topics
+News Computer Aided Design (CAD)  Automotive & Transportation  
+
+
+
+
+
+Stay up to date with the Siemens Software news you need the most.
+
+						Get Started						
+
+
+
+What to read next:What do C-suite executives care about?April 28, 2023A key factor, perhaps the key factor, in creating competitive advantage in A&D product development is the speed of engineering...By John O'Connor  6 MIN READNX Tips and Tricks | Assemblies: Re-defining the BOM structureJanuary 17, 2024If you haven’t heard, the latest release of NX™ software was released in December of 2023. We are excited to...By Drew Wilson  5 MIN READThe Design Process at Piper Aircraft | NX CAD for AerospaceMay 2, 2023Piper Aircraft, well-known for its iconic yellow Piper Cub, is a general aviation aircraft manufacturing company headquartered in Vero Beach,...By Mollie Gladden  5 MIN READ 
+
+
+Leave a Reply Cancel replyYou must be logged in to post a comment. 
+
+
+
+This article first appeared on the Siemens Digital Industries Software blog at https://blogs.sw.siemens.com/nx-design/daimler-completes-cad-transition-to-nx/

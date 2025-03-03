@@ -1,0 +1,51 @@
+
+Benchmark for Geometrically Nonlinear Analysis
+7 minutes read
+
+Imagine you have just bought a new software package or created one yourself. Perhaps you are just learning about nonlinear FEA and you are not sure if what you are doing is correct. Or maybe you have come up with a new approach to solving nonlinear problems and you would like to validate it, or you just opened silo code EN 1993-4-1 and have no clue where to take the required comparison outcomes from. In all those situations benchmarks are very useful, and today I will present the most used benchmark in geometrically nonlinear analysis of shells.
+Introduction
+Benchmark is basically a well-described problem someone has already solved. This allows you to try to solve the same problem and hopefully get the same results. Of course, it would be best if the problem had an analytical solution (since then you are certain that the solution you are comparing to is correct). Unfortunately in shell design, such luxury is rarely available (which makes the design of shells that much harder). Benchmarks are very important in design, in fact, code EN 1993-4-1 for silo design directly indicates that you need to perform some benchmarking in order to calculate silos directly with FEA.
+The lack of analytical solutions for most shell stability problems makes it hard to pick a benchmark at the beginning. This is why people usually use problems that were solved by authorities in this field. Since there are relatively few authorities, also the pool of solved problems by those people is relatively small, and in time certain benchmarks become very popular (simply since they are widely used in literature).
+Without any doubt, the most popular benchmark is a “Weld Type A” problem described by prof. Rotter in 1989. In my opinion prof. Rotter is the biggest authority in the shell design field of our times (as I wrote here). If for whatever reason you do not believe in “authorities” then still “Weld Type A” is the best benchmark for you: It was used so many times by different researchers all over the world, that we can basically be sure, that the answer is correct.
+Weld Type A
+If you are interested original text was published in Journal of Structural Engineering, Vol. 115, May 1989. It described a popular imperfection shape caused by welding depression dividing this shape into “Type A” and “Type B”, hence the name of the benchmark (as well as one of the popular imperfection shapes used in the design of shells). The problem was described very well and easily allowed for the reproduction of this analysis, which is one of the reasons why it became so popular. The original text discusses outcomes from analyzes using those imperfections, but here we will focus on a specific case described in the paper (there were several there).
+The defined task concerns a shell model with a length to radius ratio L / r = 3. The radius to thickness ratio of the shell is r / t = 1000. Material is linearly elastic with E = 200 GPa and Poisson’s ratio v = 0.3. Shell is simply supported at ends (S3), and even a mesh size is defined in the region of imperfection as 0.25√(rt). Imperfection amplitude is given by:
+
+Where  is the imperfection amplitude (it this benchmark equal to t), x is a coordinate along shell length (x=0 in the middle of the shell where the imperfection is applied), also:
+
+Everything is made dimensionless, but if we assume that the shell radius is r = 1000mm, then shell length is L = 3000mm (L / r = 3), thickness t = 1mm (r / t = 1000), just as the imperfection amplitude. If an equation for imperfect shape is used in such a case obtained geometry of the shell looks as follows:
+
+There are several possibilities on how to implement such geometry in Femap (or any other pre-post processor really). The easiest is to draw such a chart into your CAD software (this can be easily done with generated point coordinates in Excel), and then copying such line into Femap and creating a shell by rotating this line along the axis of the shell. Some time ago I wrote a script that manually generate such weld depression on a given height in a shell, but this is mostly since I use it as imperfection in some shell designs. If you wish to make a benchmark only – then there is no point in making such a script, just import the lines from CAD software and you’re done.
+With your model ready (remember to apply compressive load at one of the ends of the shell, value isn’t really important, as long as it is higher than capacity), define geometrically nonlinear analysis (I have a post on how to do it). Then run the analysis and draw a stability path (you can read about it here). The outcome should look like this:
+
+If you have defined more steps, the post-critical path may be much longer. Usually, when I do benchmarks I tend to leave only a few increments after failure which is quite easy… since I know the outcome from the start. This saves an enormous amount of time! Also, this is a very good example of how to use subcases (I wrote a guide about them here), note how few steps are made on the stability path below the ratio of 0.25 (small red dots), this is because I have set up the first subcase with very long steps, and then the second subcase with very small steps (which can be seen on a close up above).
+Also, note that the outcome on the vertical axis is not a “typical” load multiplier but a relation between compressive longitudinal stress in the shell denoted as  (simply edge load in kN/m divided by shell thickness) and “classical” stress. This is because such was the way of presenting outcomes in the original paper. The “classical” stress was derived almost 100 years ago, and relates to the buckling capacity of a perfect shell supported uniformly on one edge and uniformly compressed on the other. In our case the value can be derived from the equation below:
+
+And in our case equals:
+
+
+Share this post with your Friends!
+
+Facebook
+LinkedIn
+
+
+If you have drawn the stability path, you can easily read the outcome from it (just remember to use stress in the shell, not forces or load multiplier). If everything went well you should obtain:
+
+Also, there should be 18 complete buckling waves around the circumference, which in close up looks like this (note that the very dense mesh is only given in the imperfect zone, apart from that much bigger elements were used which greatly decreases computing time, and do not influence outcomes):
+
+If you received the same outcome… everything is fine – you did a correct job. If not, try to tweak your model a bit, check boundary conditions, as well as loads (remember to use stresses in the outcomes!). Check if the model response you have received is symmetric (it should be, if not something is wrong in the model). And if everything else fails, make sure that the actual shape you are using is correct!
+I hope you will find this useful. If you have any questions, please leave them in the comments.
+Have a good one!
+Łukasz
+Want to Learn Something Useful?
+Definitely check out my FREE FEA essentials course. You can get it by subscribing below.
+
+
+
+
+Categories:
+Benchmarking
+
+
+

@@ -1,0 +1,90 @@
+
+This article was co-authored by Fabien Leray (Business Development Manager at EDF) and Guilhem Ferte (R&D Lead at EDF).
+
+Code_Aster
+Finite Element Analysis (FEA)
+Product Update
+SimScale Advantages
+
+
+Structural analysis and simulation is a vital tool for engineers, enabling them to predict how structures will perform under different conditions and optimize designs before construction. This process ensures safety, reliability, and efficiency while saving time and resources. In a collaborative effort, EDF and SimScale have joined forces to democratize access to advanced structural mechanics by enabling online application of finite element analysis (FEA) through integrating EDF’s Code_Aster solver into SimScale, thus empowering engineers worldwide to make informed decisions quickly and early in the design process and drive innovation in engineering design and development. In this article, we take a closer look at how this collaboration materialized and how SimScale customers are benefiting from it.
+Introducing Code_Aster by EDF
+Code_Aster is a wide-range finite element solver. It is developed by the Research and Development team of EDF, the lead European electricity supplier. EDF is liable for the safe and efficient operation of its power plants and facilities, the assessment of which requires expertise in various advanced simulation models in structural mechanics. These models are often specific to the energy sector and do not always exist in closed-source software or in a way that can be adequately controlled. Thus, EDF started the development of its own structural mechanics solver, Code_Aster, primarily as a way to fully master these models and secure their availability in-house for its applications.
+
+Figure 1: Code_Aster from EDF
+Thus, the development team of Code_Aster provides EDF with a code that:
+
+Meets the demanding quality requirements of nuclear regulation in terms of robustness, testing, and reliability
+Can host research work with short transfer times to engineering units when they are mature enough for use in real applications
+
+Ten years later, in 2001, EDF decided to distribute Code_Aster under the GNU GPL open-source license. The aim was to collect feedback and gain scientific recognition for its methods, ensuring they were up to date with the best practices of numerical mechanical engineering.
+Advanced Structural Mechanics at SimScale
+Fast forward another ten years, and the founders of SimScale began to dream of making engineering simulation truly accessible to all engineers by building a 100% cloud-native simulation platform directly in a web browser.
+Advanced structural mechanics would be a key component for SimScale alongside fluid dynamics. As the SimScale platform would address the needs of simulation experts and the wider engineering audience, the solution had to be efficient, accurate, robust, and easy to use. SimScale could ensure an intuitive user experience plus best-in-class computation performance, which left the need for a robust and accurate FEA engine.
+Code_Aster had been on SimScale’s radar from the very beginning. They had already implemented the open-source CFD code OpenFOAM with great success and were looking to repeat the process for a structural mechanics solution. After diving into the functionality and performance of Code_Aster, it was absolutely clear that there was enormous potential. Let’s dig into what makes Code_Aster special and why it is the perfect match for SimScale.
+Integrating Code_Aster with SimScale
+Code_Aster Features
+The strength of Code_Aster lies in the variety of modeling abilities that go well beyond the classical features of a finite element code, especially for nonlinear analyses. In particular, Code_Aster includes (but is not limited to):
+
+A fully distributed parallel mode to carry out simulations over 10M DoFs in a massively scalable fashion
+Over 200 constitutive laws and 400 finite element types, addressing, for instance, thermo-hydro-mechanical problems, porous or incompressible materials
+Features for vibration analysis and rotating machinery
+Frictional contact, finite displacements, and finite strains
+Advanced earthquake engineering methods
+A wide range of fracture mechanics methods
+Features for metallurgy and welding simulation
+Civil engineering methods (design of new buildings, aging of existing buildings, etc.)
+
+To comply with safety requirements, Code_Aster has about 4,400 elementary verification tests, half of which are compared against analytical or cross-references. It also has a code coverage rate of 90% to ensure that the implementation of the models is appropriate.
+Examples of Code_Aster
+The use of Code_Aster has been validated for industrial studies in a variety of domains. For completeness, the reader may consult the book of 2023 studies or the inventory of studies presented at the annual user’s day.
+For instance, the proof of structural integrity for the Castillon arch dam was entirely done numerically with Code_Aster. After calibrating the numerical model to monitor sensor data, static analysis was done to assess the response to normal or exceptional thermo hydraulic pressure. Then, the seismic response of the structure to a 0.34g earthquake was evaluated with an advanced dynamic model, taking into account the foundations and absorbing boundaries at their borders and a full modelization of the fluid through the acoustic fluid-structure interactions capabilities of the code.
+
+
+
+
+Figure 2: The Castillon Dam (Left) base and deformed geometry, (Middle) static analysis, (Right) dynamic analysis.
+Code_Aster was also used for advanced thermal-metallurgical-mechanical simulation of the Wire Arc Additive Manufacturing process. In this computation, the metal supply is modeled by the successive activation of elements in the model and a heat source that varies in shape over time, accounting for the interaction between the electric arc and the molten pool. The heat source was calibrated by Bayesian models, solving inverse problems based on a metamodel of the simulation model. The results were confirmed and validated by additional experimental data.
+
+
+
+
+Figure 3: Simulation of the Wire-Arc Added Manufacturing (Left) process (Middle) thermal result (Right) mechanical result.
+In a third example, Code_Aster was used to assess the fracture risk of welded joints in the metallic lining of containment buildings. The study aims to decide on the use of ultrasound controls rather than X-ray inspection as a method for tracking the initiation of defects in the welding joints, given that there is no applicable norm for using ultrasound for such thin structures. Thus, the study carries out large deformations and fracture analysis (computation of stress intensity factors) for samples and the real structures for defect sizes known to be above the detection level of ultrasounds. Results are compared to experimental data, both of which conclude with the absence of fracture for the reglementary loads and crack sizes.
+
+Figure 4: flexural-compression response of a welded plate with a defect in large deformations
+The examples above are just a glimpse into how Code_Aster is utilized within the industry at the forefront of advanced structural analysis. The nonlinear and dynamic capabilities of the code stuck out to SimScale, who understood that such analyses are often resource-intensive and would massively benefit from a cloud-based solution.
+Take a dynamic shock analysis as an example. Typically, many time steps will be saved, and for a full system, a large number of mesh nodes are required for accurate results. Add the fact that multiple shocks must be simulated in different directions, and you have yourself a significant computation requirement. Pairing such an analysis with Simscale’s unlimited parallel solving and data storage makes for a game-changing solution.
+With this vision in mind, SimScale and EDF teamed up to bring advanced structural analysis to the masses.
+EDF and Simscale regularly exchange information about the aspects of Code_Aster. A mutually beneficial relationship has been established in which EDF provides technical support for specific developments, and SimScale contributes to the source code.
+
+
+
+Explore FEA in SimScale
+
+
+        Discover More    
+
+
+
+
+SimScale Applications & Examples
+Now that we have discussed some of the nuts and bolts that make SimScale and Code_Aster such a great pair, let’s examine some examples of how the joint solution empowers engineers to design, optimize, and validate their products.
+For example, ITW utilizes nonlinear static analysis within the early-stage design to optimize its plastic fastening components for the automotive industry. Similarly, consider Withings, which maximizes product survivability with a fully cloud-native engineering process, including nonlinear contact assessment.
+The previous examples involve similar simulations incorporating nonlinear material, contact, and large deformations; however, nonlinear analysis can be extended to include thermal effects. Many SimScale customers utilize nonlinear thermomechanical analysis to assess rotor and shaft interactions for products such as electric motors and turbochargers and analyze the peak stresses and plastic strains experienced by manifolds and housings under cyclic thermal shocks.
+Moving into the world of inertial effects and the need for optimal product performance under dynamic load cases, vibration and dynamic event simulation are key application areas for SimScale users.
+Vibration analysis utilizing large-scale modal and harmonic analysis enables SimScale customers to understand the risk and extent of resonance in their products at various stages of their lifecycle. The modal analysis identifies a product’s natural modes of vibration. It can be used to optimize a design such that the lowest frequency modes are above the operating ranges of the product. This is often a strict criterion for products such as those in automotive, which are exposed to road-induced vibrations up to 200Hz. 
+If a cell stack can be optimized, for example, by adding stiffening elements of reworking components, such that the lowest mode has a frequency above 200 Hz, the risk of prototype failure is significantly reduced. Engineers perform modal analysis at each iteration to inform the next design change. This is an example of “simulation-driven design,” which is becoming ever more present due to the substantial cost savings that it brings down the line.
+Sometimes, however, just knowing the frequency or natural vibration modes isn’t enough, and SimScale customers must assess the physical response to an excitation and understand the extent of resonant behavior in terms of maximum deflections, accelerations, and stresses. This is the case for piping systems, for example, in heat pumps, where the response of the piping due to the compressor rotations must be examined to understand the risk of fatigue failure and potential leakage of dangerous refrigerants. The same concept applies across many products, including hydraulic and fuel systems, in the automotive and aerospace sectors.
+Vibration analysis doesn’t stop there for SimScale customers. It is routinely used to replicate shaker table test conditions for EV batteries and electrical equipment. TechSAT, for example, mitigates the risk of component failure during physical testing in accordance with DO-160G standards.
+For the majority of customers performing vibration analysis, a key concern is also product survivability during dynamic events such as shocks, impacts and drops. Anybotics, for instance, utilizes Simscale’s full range of advanced structural analysis to design and develop explosion-proof legged robots, particularly assessing the dynamic stresses during robotic movements and impact events.
+To Wrap Up
+We have looked at the story of SimScale and Code_Aster and seen how the strengths of both software combine to create a structural analysis product that provides the accuracy required for late-stage design validation with the ease of use needed for early-stage design simulation.The continued collaboration of EDF and SimScale is key to empowering every engineer to innovate faster thanks to making high-fidelity engineering simulation truly accessible from anywhere and at any scale.
+
+Set up your own cloud-native simulation via the web in minutes by creating an account on the SimScale platform. No installation, special hardware, or credit card is required.
+
+Start Simulating
+Request Demo
+
+
+

@@ -1,0 +1,17 @@
+{
+  "presets": [
+    "@babel/preset-env",
+    "@babel/preset-react"
+  ],
+  "plugins": [
+    [
+      "babel-plugin-transform-vite-meta-env",
+      {
+        "env": {
+          "VITE_HOST": "http://localhost",
+          "VITE_PORT": "3000"
+        }
+      }
+    ]
+  ]
+}
