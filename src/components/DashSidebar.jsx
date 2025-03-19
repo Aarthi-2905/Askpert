@@ -1,19 +1,18 @@
 import React from 'react';
-import { Sidebar, Modal, Button,TextInput } from 'flowbite-react';
-import { HiUser,HiArrowSmRight,HiOutlineUserGroup,HiAnnotation,HiOutlineExclamationCircle, HiUserCircle,HiX} from 'react-icons/hi';
+import { Sidebar, Modal, Button, TextInput } from 'flowbite-react';
+import { HiUser, HiArrowSmRight, HiOutlineExclamationCircle, HiUserCircle, HiX } from 'react-icons/hi';
 import { useEffect, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { FaAccusoft, FaChartLine, FaRobot } from 'react-icons/fa';
-import { fetchUseremail, logout, setStatus } from "../utils/Auth";
-import {Flowbite} from 'flowbite-react'
-import { verifyToken } from '../utils/AuthUtils';
+import { FaHistory, FaPlus } from 'react-icons/fa';
+import { fetchUseremail, logout } from "../utils/Auth";
+import { Flowbite } from 'flowbite-react';
 import Toast from '../utils/Toast';
 
 const customTheme = {  
     sidebar: {    
         root: {      
-            base: "h-full",      
-            inner: "h-full overflow-y-auto overflow-x-hidden bg-[rgb(31,41,55)] py-12 pl-12 text-white "    
+            base: "h-full transition-all duration-300",      
+            inner: "h-full overflow-y-auto overflow-x-hidden bg-[rgb(249,243,241)] py-4 text-white relative"    
         }  
     }
 };
@@ -21,22 +20,14 @@ const customTheme = {
 export default function DashSidebar() {
     const [tab, setTab] = useState('');
     const [showSignOutModal, setShowSignOutModal] = useState(false);
-    const location = useLocation();
-    const navigate = useNavigate();
-    const userrole = useState(localStorage.getItem('role'));
-    const [token, setToken] = useState(localStorage.getItem('token'));
-    const [showProfileModal, setShowProfileModal] = useState(false); // For profile modal
+    const [showProfileModal, setShowProfileModal] = useState(false);
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [toast, setToast] = useState({ show: false, message: '', type: '' });
-
-    useEffect(() => {
-        const token = localStorage.getItem('token');
-        if (token) {
-            verifyToken(token, navigate);
-        }
-    }, [navigate]);
-
+    const [isExpanded, setIsExpanded] = useState(false);
+    const location = useLocation();
+    const navigate = useNavigate();
+    
     useEffect(() => {
         const urlParams = new URLSearchParams(location.search);
         const tabFromUrl = urlParams.get('tab');
@@ -44,6 +35,16 @@ export default function DashSidebar() {
             setTab(tabFromUrl);
         }
     }, [location.search]);
+
+    useEffect(() => {
+        const storedToast = sessionStorage.getItem('toastMessage');
+        if (storedToast) {
+            const toastData = JSON.parse(storedToast);
+            setToast(toastData);
+            sessionStorage.removeItem('toastMessage');
+            autoCloseToast();
+        }
+    }, []);
 
     const handleSignOut = () => {
         logout();
@@ -56,21 +57,19 @@ export default function DashSidebar() {
         localStorage.setItem('status','Signout Successfully');
     };
 
-
-    const handleSaveProfile  = async (e) => {
+    const handleSaveProfile = async (e) => {
         e.preventDefault();
         const updatedData = {
             username: username,
             email: email,
         };
-        try{
-            const response = await fetch(`${import.meta.env.VITE_HOST}:${import.meta.env.VITE_PORT}/users/edit/profile`,{
-                method : 'PUT',
-                headers : {
-                    'content-type' : 'application/json',
-                    Authorization: "Bearer " + token,
+        try {
+            const response = await fetch(`${import.meta.env.VITE_HOST}:${import.meta.env.VITE_PORT}/users/edit/profile`, {
+                method: 'PUT',
+                headers: {
+                    'content-type': 'application/json',
                 },
-                body : JSON.stringify(updatedData),
+                body: JSON.stringify(updatedData),
             });
             if (response) {
                 const updatedData = await response.json();
@@ -82,7 +81,7 @@ export default function DashSidebar() {
                 }));
                 autoCloseToast();
                 window.location.reload();
-            } else{
+            } else {
                 sessionStorage.setItem('toastMessage', JSON.stringify({
                     show: true,
                     message: 'Failed to Update',
@@ -90,22 +89,12 @@ export default function DashSidebar() {
                 }));
                 autoCloseToast();
             }
-        }catch(error){
+        } catch (error) {
             throw new Error(error);
         }
     };
-     useEffect(() => {
-            const storedToast = sessionStorage.getItem('toastMessage');
-            if (storedToast) {
-                const toastData = JSON.parse(storedToast);
-                setToast(toastData);
-                sessionStorage.removeItem('toastMessage');
-                autoCloseToast();
-            }
-        }, []);
 
     const handleOpenProfileModal = () => {
-        // Populate the fields with data from local storage when opening the modal
         setUsername(localStorage.getItem('username') || '');
         setEmail(fetchUseremail() || '');
         setShowProfileModal(true);
@@ -114,102 +103,151 @@ export default function DashSidebar() {
     const autoCloseToast = () => {
         setTimeout(() => {
             setToast({ show: false, message: '', type: '' });
-        }, 4000); // Auto-close after 10 seconds (10000ms)
+        }, 4000);
     };
-    // const renderToast = () => {
-    //     if (!toast.show) return null;
-    //     const alertStyle = toast.type === 'success'
-    //         ? 'bg-green-100 text-green-600 border-t-4 border-green-400 shadow-lg'
-    //         : 'bg-red-100 text-red-600 border-t-4 border-red-400 shadow-lg';
     
-    //     return (
-    //         <div  role="alert" style={{ zIndex: 9999 }}
-    //             className={`fixed top-5 left-1/2 transform -translate-x-1/2 z-50 flex p-4 rounded-lg ${alertStyle} mt-5 max-w-lg w-full`}
-    //         >
-    //             <div className="ml-3 text-sm font-medium">
-    //                 {toast.message}
-    //             </div>
-    //             <button type="button" aria-label="Close"
-    //                 className="ml-auto -mx-1.5 -my-1.5 text-red-600 rounded-lg focus:ring-2 focus:ring-red-400 p-1.5 hover:bg-red-200 inline-flex h-8 w-8"
-    //                 onClick={() => setToast({ show: false, message: '', type: '' })}>
-    //                 <span className="sr-only">Close</span>
-    //                 <HiX className="w-5 h-5" />
-    //             </button>
-    //         </div>
-    //     );
-    // };
+    const handleNewChat = () => {
+        navigate('/dashboard?tab=dash');
+        // Logic to start a new chat
+        // You might want to reset conversation state here
+    };
 
-    const activeStyle = 'bg-gradient-to-r from-[rgba(31,41,55,0)] to-[rgba(168,224,255,1)] hover:font-semibold font-semibold text-white hover:bg-gray-100 hover:text-black  w-full pr-0 rounded-none'; // Active tab style
-    const inactiveStyle = 'hover:bg-gradient-to-r hover:from-[rgba(31,41,55,0)] hover:font-semibold hover:to-[rgba(168,224,255,1)] hover:text-black text-white rounded-none'; // Inactive tab hover style
+    const activeStyle = 'bg-gradient-to-r from-[rgba(249,243,241)] to-[rgba(217,119,87)] font-semibold text-black w-full rounded-none flex items-center text-black hover:bg-gray-200 p-2 rounded ';
+    const inactiveStyle = 'hover:bg-gradient-to-r hover:from-[rgba(249,243,241)] hover:font-semibold hover:to-[rgba(217,119,87,1)] hover:text-black text-black rounded-none flex items-center text-black hover:bg-gray-200 p-2 rounded ';
 
     return (
         <>
             <Flowbite theme={{ theme: customTheme }}>
                 <div className='justify-centre items-center mb-4'>
-                    {/* {renderToast()} */}
                     <Toast toast={toast} setToast={setToast} />
                 </div>
-                <Sidebar className='w-80 h-full bg-gray-800 '>
-                    <Sidebar.Items className='flex flex-col h-full '>
-                        <Sidebar.ItemGroup className='flex flex-col gap-1 text-white'>
-                            <Link to='/dashboard?tab=dash'>
-                                <Sidebar.Item className={`${tab === 'dash' || !tab ? activeStyle : inactiveStyle}`}
-                                    icon={() => <FaRobot style={{ color: 'rgb(168,224,255)', fontSize: '24px'}} />} as='div'>
-                                    Chat Interface
+                
+                {/* Toggle button */}
+                <div 
+                    className={`absolute z-10 left-0 top-1/2 transform -translate-y-1/2 ${isExpanded ? 'left-64' : 'left-6'} transition-all duration-300`}
+                    onMouseEnter={() => setIsExpanded(true)}
+                >
+                    <button className="bg-[rgb(217,119,87)] p-2 rounded-full shadow-lg">
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            {isExpanded ? 
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /> : 
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                            }
+                        </svg>
+                    </button>
+                </div>
+                
+                {/* <div 
+                    className={`${isExpanded ? 'w-64' : 'w-0'} h-full transition-all duration-300 overflow-hidden`}
+                    onMouseLeave={() => setIsExpanded(false)}
+                > */}
+                {/* <div 
+                    className={`${isExpanded ? 'w-64' : 'w-0'}  top-16 left-0 z-30 
+                     h-[calc(100vh-4rem)] bg-[rgb(249,243,241)] transition-all duration-300 overflow-hidden`}
+                    onMouseLeave={() => setIsExpanded(false)}
+                >
+                    <Sidebar className='h-full bg-[rgb(249,243,241)]'>
+                        <Sidebar.Items className='flex flex-col h-full justify-between'>
+              
+                            <Sidebar.ItemGroup className='flex flex-col gap-1 text-black'>
+                                <Link to='/dashboard?tab=dash' onClick={handleNewChat}>
+                                    <Sidebar.Item className={inactiveStyle}
+                                        icon={() => <FaPlus style={{ color: 'rgb(217,119,87)', fontSize: '20px'}} />} as='div'>
+                                        New Chat
+                                    </Sidebar.Item>
+                                </Link>
+                                <Sidebar.Item className={inactiveStyle}
+                                    icon={() => <FaHistory style={{ color: 'rgb(217,119,87)', fontSize: '20px'}} />} as='div'>
+                                    History
                                 </Sidebar.Item>
-                            </Link>
-                            {localStorage.getItem('role') === 'super_admin' && (
-                                <>
-                                    <Link to='/dashboard?tab=users'>
-                                        <Sidebar.Item className={`${tab === 'users' ? activeStyle : inactiveStyle}`}
-                                            icon={() => <HiOutlineUserGroup  style={{ color: 'rgb(168,224,255)', fontSize: '24px'}} />} as='div'>
-                                            User Management
-                                        </Sidebar.Item>
-                                    </Link>
-                                    <Link to='/dashboard?tab=requests'>
-                                        <Sidebar.Item className={`${tab === 'requests' ? activeStyle : inactiveStyle}`}
-                                            icon={() => <HiAnnotation  style={{ color: 'rgb(168,224,255)', fontSize: '24px'}} />} as='div'>
-                                            Requested Files
-                                        </Sidebar.Item>
-                                    </Link>
-                                    <Link to='/dashboard?tab=metrics'>
-                                        <Sidebar.Item className={`${tab === 'metrics' || !tab ? activeStyle : inactiveStyle}`}
-                                            icon={() => <FaChartLine style={{ color: 'rgb(168,224,255)', fontSize: '24px'}} />} as='div'>
-                                            Metrics
-                                        </Sidebar.Item>
-                                    </Link>
-                                    
-                                </>
-                            )}
-                           
-                            <Sidebar.Item className={`${tab === 'profile' ? activeStyle : inactiveStyle}`}
-                                icon={() => <HiUser style={{ color: 'rgb(168,224,255)', fontSize: '28px'}} />}
-                                onClick={handleOpenProfileModal}>
-                                <div className="flex items-center justify-between w-full ">
-                                    <span>Profile</span>
-                                    <span className="px-2 py-1 mr-16 text-xs font-medium bg-gray-700 hover:text-white rounded">
-                                        {localStorage.getItem('role')}
-                                    </span>
+                            </Sidebar.ItemGroup>
+                            
+          
+                            <Sidebar.ItemGroup className='flex flex-col gap-1 text-black mt-auto'>
+                                <Sidebar.Item className={`${tab === 'profile' ? activeStyle : inactiveStyle}`}
+                                    icon={() => <HiUser style={{ color: 'rgb(217,119,87)', fontSize: '24px'}} />}
+                                    onClick={handleOpenProfileModal}>
+                                    <div className="flex items-center justify-between w-full">
+                                        <span>Profile</span>
+                                        <span className="px-2 py-1 mr-2 text-xs font-medium bg-gray-700 text-white rounded">
+                                            {localStorage.getItem('role')}
+                                        </span>
+                                    </div>
+                                </Sidebar.Item>
+                                <Sidebar.Item icon={() => <HiArrowSmRight style={{ color: 'rgb(217,119,87)', fontSize: '24px'}} />} 
+                                    className={inactiveStyle}
+                                    onClick={() => setShowSignOutModal(true)}>
+                                    Sign Out
+                                </Sidebar.Item>
+                            </Sidebar.ItemGroup>
+                        </Sidebar.Items>
+                    </Sidebar>
+                </div> */}
+                  <div 
+                    className={` top-16 left-0 z-30 h-[calc(100vh-4rem)] bg-[rgb(249,243,241)] 
+                    transition-all duration-300 shadow-lg ${isExpanded ? 'w-64' : 'w-0'}`}
+                    onMouseLeave={() => setIsExpanded(false)}
+                >
+                    {isExpanded && (
+                        <div className="flex flex-col h-full justify-between py-6">
+                            {/* Top section: Chat history & New chat */}
+                            <div className="px-4">
+                                <Button 
+                                    onClick={handleNewChat}
+                                    className="mb-4 w-full flex items-center justify-center bg-[rgb(217,119,87)] hover:bg-[rgb(197,99,67)]"
+                                >
+                                    <FaPlus className="mr-2" /> New Chat
+                                </Button>
+                                
+                                <div className="mt-6">
+                                    <h3 className="text-black font-medium mb-2">Chat History</h3>
+                                    <div className="space-y-2 max-h-[50vh] overflow-y-auto">
+                                        <Link to="#" className={inactiveStyle}>
+                                            <FaHistory className="mr-2 text-[rgb(217,119,87)]" />
+                                            <span className="truncate">Recent Chat 1</span>
+                                        </Link>
+                                        <Link to="#" className={inactiveStyle}>
+                                            <FaHistory className="mr-2 text-[rgb(217,119,87)]" />
+                                            <span className="truncate">Recent Chat 2</span>
+                                        </Link>
+                                        {/* Add more history items as needed */}
+                                    </div>
                                 </div>
-                            </Sidebar.Item>
-                            <Sidebar.Item icon={() => <HiArrowSmRight  style={{ color: 'rgb(168,224,255)', fontSize: '28px'}} />} 
-                                className={`${tab === '#' ? activeStyle : inactiveStyle}  `}
-                                onClick={() => setShowSignOutModal(true)}>
-                                Sign Out
-                            </Sidebar.Item>
-                        </Sidebar.ItemGroup>
-                    </Sidebar.Items>
-                </Sidebar>
+                            </div>
+                            
+                            {/* Bottom section: Profile & Sign out */}
+                            <div className="mt-auto px-4">
+                                <div className="border-t border-gray-300 pt-4 space-y-2">
+                                    <div 
+                                        onClick={handleOpenProfileModal} 
+                                        className={inactiveStyle}
+                                    >
+                                        <HiUser  className="mr-2 text-[rgb(217,119,87)]" size={20} />
+                                        Profile
+                                    </div>
+                                    <div 
+                                        onClick={() => setShowSignOutModal(true)} 
+                                        className={inactiveStyle}
+                                    >
+                                        <HiArrowSmRight className="mr-2 text-[rgb(217,119,87)]" size={20} />
+                                        Sign Out
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    )}
+                </div>
 
+                {/* Modals */}
                 <Modal show={showSignOutModal} onClose={() => setShowSignOutModal(false)} popup size='md'>
                     <Modal.Header />
                     <Modal.Body>
                         <div className='text-center m-8 mr-1- ml-10'>
                             <h1 className='text-black font-bold text-xl'>Sign Out</h1>
-                            <img  src="/assets/signout.png"  alt="signout Icon"
+                            <img src="/assets/signout.png" alt="signout Icon"
                                 className="mx-auto m-8 mb-5 h-20 w-20 object-contain" 
                             />
-                            <h3 className='mb-5 text-lg  text-black'>
+                            <h3 className='mb-5 text-lg text-black'>
                                 Are you sure you want to sign out?
                             </h3>
                             <div className='flex justify-center gap-4'>
@@ -227,13 +265,13 @@ export default function DashSidebar() {
                 <Modal show={showProfileModal} onClose={() => setShowProfileModal(false)}
                     popup className="w-full lg:w-10/5">
                     <Modal.Header />
-                    <Modal.Body className='flex flex-col items-center '>
+                    <Modal.Body className='flex flex-col items-center'>
                         <h1 className='my-1 text-center font-semibold text-3xl'>Profile</h1>
                         <div className='mb-5 self-center cursor-pointer shadow-md overflow-hidden 
                             rounded-full text-gray-500'>
                             <HiUserCircle className='w-24 h-24 text-black' />
                         </div>
-                        <h3 className='mb-4 text-xl font-semibold text-black '>{username}</h3>
+                        <h3 className='mb-4 text-xl font-semibold text-black'>{username}</h3>
                         <form className='flex flex-col gap-4' onSubmit={handleSaveProfile}>
                             <div className='flex flex-col gap-5 w-full px-12'>
                                 <div className='flex justify-between w-full'>
@@ -248,21 +286,20 @@ export default function DashSidebar() {
                                         <label className='text-left text-black font-bold'>Email:</label>
                                         <TextInput type='email' className="my-2" value={email}
                                             onChange={(e) => setEmail(e.target.value)}
-                                            placeholder='Email' required  disabled
+                                            placeholder='Email' required disabled
                                         />
                                     </div>
                                 </div>
                             </div>
 
-                            {/* Save & Cancel Buttons */}
                             <div className='flex justify-center gap-4 mt-6'>
                                 <Button color='success' type='submit' className='bg-customGreen'>
                                     Save Change
                                 </Button>
-                                <Button  class="text-white bg-gradient-to-r from-red-400 via-red-500
+                                <Button class="text-white bg-gradient-to-r from-red-400 via-red-500
                                     to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none
                                     focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg 
-                                    text-sm px-4  text-center" onClick={() => setShowProfileModal(false)}>
+                                    text-sm px-4 text-center" onClick={() => setShowProfileModal(false)}>
                                     Cancel
                                 </Button>
                             </div>
@@ -273,4 +310,3 @@ export default function DashSidebar() {
         </>
     );
 }
-

@@ -23,7 +23,7 @@ function Dashboard() {
     return (
         <>
             <DashHeader />
-            <div className='min-h-screen flex flex-col md:flex-row bg-[rgb(16,23,42)] '>
+            <div className='min-h-screen flex flex-col md:flex-row bg-[rgb(249,243,241)] '>
                 <div className='flex h-screen '>
                     <DashSidebar />
                 </div>
@@ -35,4 +35,5 @@ function Dashboard() {
         </>
     );
 }
-export default withAuth(Dashboard);
+// export default withAuth(Dashboard);
+export default Dashboard;

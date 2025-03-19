@@ -54,7 +54,7 @@ const Layout = ({ children, hideButton }) => {
         );
     };
     return (
-        <div className='min-h-screen  overflow-hidden bg-[rgb(16,23,42)] bg-cover bg-center bg-no-repeat bg-landingpage'>
+        <div className='min-h-screen  overflow-hidden bg-[rgb(249,243,241)] bg-cover bg-center bg-no-repeat bg-landingpage'>
             <div className="justify-center items-center mb-4">
                 {renderToast()}
             </div>

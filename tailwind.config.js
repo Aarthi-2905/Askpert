@@ -27,7 +27,7 @@ export default {
             colors: {
             'primary': "#ECEEFF",
             "coral-red": "#FF4040",
-            "slate-gray": "#1F2937",
+            "slate-gray": "#f0eee5",
             "pale-blue": "#F5F6FF",
             // "white-400": "rgba(255, 255, 255, 0.80)",
             customColor: 'rgb(31,41,55)',
@@ -50,7 +50,7 @@ export default {
             //     'signinpage': "url('./signin_page.png')", 
             // }, 
             backgroundImage: {
-                'landingpage': "url('/assets/landing_page.png')",
+                'landingpage': "url('/assets/landing_page2.jpg')",
                 'signinpage': "url('/assets/signin_page.png')", 
             }, 
         },

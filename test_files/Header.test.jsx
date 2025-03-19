@@ -17,7 +17,7 @@ describe('Header Component', () => {
         expect(logo).toBeInTheDocument();
         
         // Check if the title is rendered
-        expect(screen.getByText(/Varphi KBI/i)).toBeInTheDocument();
+        expect(screen.getByText(/Askpert/i)).toBeInTheDocument();
     });
 
     test('renders Sign In button when hideSigninButton is false', () => {

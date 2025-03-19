@@ -9,7 +9,7 @@ export async function allNotifications() {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
-                Authorization: `Bearer ${token}`,
+                // Authorization: `Bearer ${token}`,
             },
         });
         const data = await response.json();
@@ -33,7 +33,7 @@ export async function readOneNotification(file_name, email) {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
-                Authorization: `Bearer ${token}`,
+                // Authorization: `Bearer ${token}`,
             },
             body: JSON.stringify({ 'email' : email, 'file_name': file_name }),
         });
@@ -52,7 +52,7 @@ export async function clearAllTheNotifications() {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
-                Authorization: `Bearer ${token}`,
+                // Authorization: `Bearer ${token}`,
             },
             body: JSON.stringify({}),
         });

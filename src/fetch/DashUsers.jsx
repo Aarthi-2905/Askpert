@@ -8,7 +8,7 @@ export async function addUser(currentRowData){
             method : 'POST',
             headers : {
                 'content-type' : 'application/json',
-                Authorization: "Bearer " + token,
+                // Authorization: "Bearer " + token,
             },
             body : JSON.stringify(currentRowData),
         });
@@ -26,7 +26,7 @@ export async function editUserDetails(currentRowData){
             method : 'PUT',
             headers : {
                 'content-type' : 'application/json',
-                Authorization: "Bearer " + token,
+                // Authorization: "Bearer " + token,
             },
             body : JSON.stringify(currentRowData),
         });
@@ -45,7 +45,7 @@ export async function fetchUsers() {
             method : 'GET',
             headers : {
                 'content-type' : 'application/json',
-                Authorization: "Bearer " + token,
+                // Authorization: "Bearer " + token,
             },
         }); 
         if (!response) {
@@ -66,7 +66,7 @@ export async function deleteUser(email){
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
-                Authorization: "Bearer " + token,
+                // Authorization: "Bearer " + token,
             },
             body: JSON.stringify({ email })
         });

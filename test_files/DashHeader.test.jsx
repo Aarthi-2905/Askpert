@@ -46,7 +46,7 @@ describe('DashHeader Component', () => {
                 <DashHeader />
             </BrowserRouter>
         );
-        expect(screen.getByText('Varphi KBI')).toBeInTheDocument();
+        expect(screen.getByText('Askpert')).toBeInTheDocument();
     });
 
     test('fetches user data on mount', async () => {

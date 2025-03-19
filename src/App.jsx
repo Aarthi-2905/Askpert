@@ -13,6 +13,16 @@ const App = () => {
                 <Route path='/sign-in' element={<SignIn />} />
                 <Route path='/dashboard' element={<Dashboard />} />
             </Routes>
+             {/* <Routes>
+                <Route path='/' element={<Home />} />
+                <Route path='/sign-in' element={<SignIn />} />
+                <Route path='/dashboard' element={
+                    <>
+                        <DashHeader />
+                        <Dashboard />
+                    </>
+                } />
+            </Routes> */}
         </BrowserRouter>
     );
 }

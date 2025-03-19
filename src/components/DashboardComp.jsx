@@ -255,7 +255,7 @@ const DashboardComp = () => {
 
     const ThinkingAnimation = () => {
         return (
-            <div className="flex items-center justify-center space-x-2 text-white text-lg">
+            <div className="flex items-center justify-center space-x-2 text-black text-lg">
                 <span className="animate-pulse">Thinking</span>
                 <span className="animate-bounce">.</span>
                 <span className="animate-bounce delay-150">.</span>
@@ -272,20 +272,21 @@ const DashboardComp = () => {
                 </div>
              )}
             <div className="w-full h-[calc(89vh)] flex flex-col justify-between shadow-custom-bottom 
-                rounded-lg bg-[rgb(16,23,42)] mb-10 relative">
-                <div className="flex-1 h-full p-4 overflow-y-auto scrollbar scrollbar-track-slate-700 scrollbar-thumb-slate-500" ref={chatContainerRef} data-testid="chat-container">
+                rounded-lg bg-[rgb(249,243,241)] mb-10 relative">
+                <div className="flex-1 h-full p-4 overflow-y-auto scrollbar scrollbar-track-[rgb(249,243,241)] 
+                    scrollbar-thumb-[rgb(217,119,87)] hover:scrollbar-thumb-[rgb(217,119,87,1)]" ref={chatContainerRef} data-testid="chat-container">
                     <div className="flex flex-col space-y-3">
                         <Toast toast={toast} setToast={setToast} /> 
                         {messages.map((message, index) => (
                             <div key={index} className="flex flex-col space-x-2 items-start min-w-[30%]">
-                                <div className="flex items-center space-x-2 mx-10 text-gray-900 font-semibold min-w-[30%]">
+                                <div className="flex items-center space-x-2 mx-10 font-semibold min-w-[30%]">
                                     {message.user === 'user' ? (
-                                        <FaUserCircle size={26} className="text-blue-500 mr-8" />
+                                        <FaUserCircle size={26} className="text-[rgb(217,119,87)] mr-8" />
                                     ) : (
-                                        <FaRobot size={26} className="text-green-500 mr-8" />
+                                        <FaRobot size={26} className="text-[rgb(217,119,87)] mr-8" />
                                     )}
-                                    <div className="p-2 mb-2  shadow-custom-bottom bg-[rgb(53,145,242)]  rounded-tr-xl rounded-bl-xl rounded-br-xl 
-                                        text-white  break-all w-fit min-w-[30%]">  
+                                    <div className="p-2 mb-2  shadow-custom-bottom bg-[rgb(247,246,245)]  rounded-tr-xl rounded-bl-xl rounded-br-xl 
+                                        text-black  break-all w-fit min-w-[30%] ">  
                                         {message.image && (
                                             <div className="flex flex-wrap gap-4">
                                                 <img src={`data:image/png;base64,${message.image}`}  alt={`Message related`} 
@@ -329,12 +330,12 @@ const DashboardComp = () => {
                                     onSend(e); 
                                 }
                             }}
-                            className="h-full bg-[rgb(31,41,55)] border-black text-white scrollbar-track-slate-700 scrollbar-thumb-slate-500" 
+                            className="h-full bg-[rgb(205, 111, 71)] border-black text-black scrollbar-track-slate-700 scrollbar-thumb-slate-500" 
                         />
-                        <Button type="submit" className="rounded-lg items-center text-sm m-2" gradientMonochrome="success">
+                        <Button type="submit" className="rounded-lg items-center text-sm m-2 bg-[rgb(217,119,87)]" >
                             <FaPaperPlane />
                         </Button>
-                        <FaPaperclip size={22} className="text-green-500 cursor-pointer" onClick={handleFileClick} />
+                        <FaPaperclip size={22} className="text-[rgb(217,119,87)]  cursor-pointer " onClick={handleFileClick} />
                         <input type="file" ref={fileInputRef} style={{ display: 'none' }} onChange={handleFileChange}
                             accept=".pdf,.xlsx,.txt,.pptx,.docx,.csv" multiple  data-testid="file-input"
                         />
@@ -342,6 +343,7 @@ const DashboardComp = () => {
                 </div>
             </div>
         </div>
+        
     );
 };
 

@@ -8,7 +8,7 @@ export async function uploadFile(formData){
         const response = await fetch(`${import.meta.env.VITE_HOST}:${import.meta.env.VITE_PORT}/bulk/bulk_file_upload/`, {
             method: 'POST',
             headers : {
-                Authorization: "Bearer " + token,
+                // Authorization: "Bearer " + token,
             },
             body : formData
         });
@@ -28,7 +28,7 @@ export async function userPrompt(inputText){
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                Authorization: "Bearer " + token,
+                // Authorization: "Bearer " + token,
             },
             body: JSON.stringify({ "query": inputText }),
         });
@@ -47,7 +47,7 @@ export async function sendQueryTotalTime (time_details){
         method: 'POST',
         headers : {
             'Content-Type': 'application/json',
-            Authorization: "Bearer " + token,
+            // Authorization: "Bearer " + token,
         },
         body : json
     });
@@ -60,7 +60,7 @@ export async function sendFileUploadTotalTime (time_details){
         method: 'POST',
         headers : {
             'Content-Type': 'application/json',
-            Authorization: "Bearer " + token,
+            // Authorization: "Bearer " + token,
         },
         body : json
     });

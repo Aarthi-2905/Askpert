@@ -10,13 +10,13 @@ const Header = ({ hideSigninButton }) => {
     const path = useLocation().pathname;
     return (
         <Navbar className='border-b-2 border-slate-400 
-            shadow-custom-bottom bg-[rgb(31,41,55)]'>
+            shadow-custom-bottom bg-[rgb(249,243,241)]'>
             <Link to='/' className='self-center whitespace-nowrap text-sm sm:text-xl font-semibold
-                 text-white inline-flex mt-2 pl-5'>
-                <span>
+                 text-white inline-flex mt-2 '>
+                {/* <span>
                     <img src="/assets/varphi final logo-01.png" alt='logo' className='m-0 w-[50px] h-[px] px-2' />
-                </span>
-                Varphi KBI
+                </span> */}
+                Askpert
             </Link>
             {!hideSigninButton && (
                 <div className='flex gap-2 md:order-2 pr-6'>
@@ -26,12 +26,12 @@ const Header = ({ hideSigninButton }) => {
                     <NavbarToggle></NavbarToggle>
                 </div>
             )}
-             {hideSigninButton && (
-            <NavbarCollapse>
-                <NavbarLink active={path === '/'} as={'div'} className='text-lg text-white'>
-                    <Link to='/'>Home</Link>
-                </NavbarLink>
-            </NavbarCollapse>
+            {hideSigninButton && (
+                <NavbarCollapse>
+                    <NavbarLink active={path === '/'} as={'div'} className='text-lg text-white'>
+                        <Link to='/'>Home</Link>
+                    </NavbarLink>
+                </NavbarCollapse>
              )}
         </Navbar>
     );

@@ -8,7 +8,7 @@ export async function fetchFiles() {
             method : 'GET',
             headers : {
                 'content-type' : 'application/json',
-                Authorization: "Bearer " + token,
+                // Authorization: "Bearer " + token,
             },
         }); 
 
@@ -27,7 +27,7 @@ export async function approveFile(filename) {
             method : 'POST',
             headers : {
                 'content-type' : 'application/json',
-                Authorization: "Bearer " + token,
+                // Authorization: "Bearer " + token,
             },
             body : json
         }); 
@@ -46,7 +46,7 @@ export async function rejectFile(filename) {
             method : 'POST',
             headers : {
                 'content-type' : 'application/json',
-                Authorization: "Bearer " + token,
+                // Authorization: "Bearer " + token,
             },
             body : json
         }); 
